@@ -1,0 +1,26 @@
+class Student:
+    def __init__(self, first_name, group):
+        self.first_name = first_name
+        self.group = group
+        self.grades = []
+
+    def add_grade(self, grade):
+        if 1 <= grade <= 12:
+            self.grades.append(grade)
+        else:
+            print("Оцінка має бути від 1 до 12")
+
+    def get_average(self):
+        if not self.grades:
+            return 0.0
+        return round(sum(self.grades) / len(self.grades), 2)
+
+    def is_excellent(self):
+        return self.get_average() >= 10.5
+s = Student("Ірина", "KN-201")
+s.add_grade(12)
+s.add_grade(11)
+s.add_grade(10)
+
+print(s.get_average())      # 11.0
+print(s.is_excellent())     # True
