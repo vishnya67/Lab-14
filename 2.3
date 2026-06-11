@@ -1,0 +1,22 @@
+class MyDate:
+    def __init__(self, day, month, year):
+        self.day = day
+        self.month = month
+        self.year = year
+
+    @classmethod
+    def from_string(cls, date_string):
+        day, month, year = map(int, date_string.split("."))
+        return cls(day, month, year)
+
+    def format_date(self):
+        return f"{self.year:04d}-{self.month:02d}-{self.day:02d}"
+
+d1 = MyDate(24, 8, 1991)
+print(d1.format_date())  # 1991-08-24
+
+d2 = MyDate.from_string("01.12.2023")
+print(d2.format_date())  # 2023-12-01
+
+d3 = MyDate.from_string("15.05.2000")
+print(d3.format_date())  # 2000-05-15
