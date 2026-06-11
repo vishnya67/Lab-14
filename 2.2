@@ -1,0 +1,28 @@
+class Store:
+    def __init__(self, name):
+        self.name = name
+        self.products = []
+
+    @staticmethod
+    def is_valid_product_name(name):
+        return (
+            isinstance(name, str) and
+            len(name) >= 3 and
+            not name.startswith(" ") and
+            name.strip() != ""
+        )
+
+    def add_product(self, product_name):
+        if Store.is_valid_product_name(product_name):
+            self.products.append(product_name)
+            return f"Товар ‘{product_name}’ додано"
+        else:
+            return "Невірна назва товару"
+
+
+print(Store.is_valid_product_name("Молоко"))  # True
+print(Store.is_valid_product_name(" а"))       # False
+
+s = Store("Продукти")
+print(s.add_product("Хліб"))  # Товар ‘Хліб’ додано
+print(s.add_product(" "))     # Невірна назва товару
