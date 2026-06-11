@@ -1,0 +1,38 @@
+class Account:
+    bank_name = "Український Банк"
+
+    def __init__(self, owner, balance=0):
+        self.owner = owner
+        self.balance = balance
+
+    def deposit(self, amount):
+        if amount > 0:
+            self.balance += amount
+        else:
+            print("Сума має бути додатною")
+
+    def withdraw(self, amount):
+        if amount <= 0:
+            print("Сума має бути додатною")
+        elif amount > self.balance:
+            print("Недостатньо коштів")
+        else:
+            self.balance -= amount
+
+    def transfer(self, other_account, amount):
+        if amount <= 0:
+            print("Сума має бути додатною")
+        elif amount > self.balance:
+            print("Недостатньо коштів")
+        else:
+            self.balance -= amount
+            other_account.balance += amount
+
+
+a1 = Account("Аліса", 500)
+a2 = Account("Богдан", 300)
+
+a1.transfer(a2, 200)
+
+print("Баланс a1:", a1.balance)
+print("Баланс a2:", a2.balance)
