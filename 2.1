@@ -1,0 +1,17 @@
+class User:
+    user_count = 0  # атрибут класу
+
+    def __init__(self, name):
+        self.name = name
+        User.user_count += 1
+
+    def get_total_users(cls):
+        return cls.user_count
+
+print(User.get_total_users())  # 0
+
+u1 = User("Аліса")
+print(User.get_total_users())  # 1
+
+u2 = User("Богдан")
+print(User.get_total_users())  # 2
